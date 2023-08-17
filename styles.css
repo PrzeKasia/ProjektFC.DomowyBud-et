@@ -1,0 +1,92 @@
+body {
+  font-family: "Bricolage Grotesque";
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-image: url(pieniadze.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  text-align: center;
+  z-index: 5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.balance {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  z-index: 5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.input-section {
+  margin-bottom: 20px;
+}
+
+.input-section h2 {
+  margin-top: 0;
+}
+
+.input-section input {
+  display: block;
+  width: 96%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.transactions h2 {
+  margin-top: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+li span {
+  font-weight: bold;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+  border-radius: 10px;
+}

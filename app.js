@@ -3,21 +3,21 @@ const transactionList = document.getElementById("transactionList");
 const balanceAmount = document.getElementById("balanceAmount");
 
 function updateBalance() {
-  balanceAmount.textContent = balance.toFixed(2);
+  let balanceMessage = "";
+  const absBalance = Math.abs(balance).toFixed(2);
+
   if (balance > 0) {
+    balanceMessage = `Możesz jeszcze wydać ${absBalance} PLN`;
     balanceAmount.style.color = "green";
-    balanceAmount.textContent = `Możesz jeszcze wydać ${Math.abs(
-      balance
-    ).toFixed(2)}`;
   } else if (balance < 0) {
+    balanceMessage = `Bilans jest ujemny. Jesteś na minusie ${absBalance} PLN`;
     balanceAmount.style.color = "red";
-    balanceAmount.textContent = `Bilans jest ujemny. Jesteś na minusie ${Math.abs(
-      balance
-    ).toFixed(2)}`;
   } else {
+    balanceMessage = "Bilans wynosi 0";
     balanceAmount.style.color = "black";
-    balanceAmount.textContent = "Bilans wynosi zero";
   }
+
+  balanceAmount.textContent = balanceMessage;
 }
 
 function addIncome() {
@@ -25,7 +25,7 @@ function addIncome() {
   const incomeAmount = parseFloat(
     document.getElementById("incomeAmount").value
   );
-  if (!isNaN(incomeAmount)) {
+  if (!isNaN(incomeAmount) && incomeAmount > 0) {
     balance += incomeAmount;
     updateBalance();
     addTransaction(incomeName, incomeAmount, "income");
@@ -37,7 +37,7 @@ function addExpense() {
   const expenseAmount = parseFloat(
     document.getElementById("expenseAmount").value
   );
-  if (!isNaN(expenseAmount)) {
+  if (!isNaN(expenseAmount) && expenseAmount > 0) {
     balance -= expenseAmount;
     updateBalance();
     addTransaction(expenseName, expenseAmount, "expense");
@@ -100,7 +100,7 @@ function editTransaction(event, name, amount, type) {
     prompt("Wprowadź nową kwotę transakcji:", amount)
   );
 
-  if (newName !== null && !isNaN(newAmount)) {
+  if (newName !== null && !isNaN(newAmount) && newAmount > 0) {
     const oldAmount = parseFloat(amountSpan.textContent);
 
     if (!isNaN(oldAmount)) {
@@ -135,6 +135,12 @@ function deleteTransaction(transactionItem) {
 
     updateBalance();
     transactionList.removeChild(transactionItem);
+
+    // Poprawa: Jeśli nie ma już transakcji, ustaw bilans na zero
+    if (transactionList.children.length === 0) {
+      balance = 0;
+      updateBalance();
+    }
   }
 }
 

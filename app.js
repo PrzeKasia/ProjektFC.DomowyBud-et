@@ -136,7 +136,6 @@ function deleteTransaction(transactionItem) {
     updateBalance();
     transactionList.removeChild(transactionItem);
 
-    // Poprawa: Jeśli nie ma już transakcji, ustaw bilans na zero
     if (transactionList.children.length === 0) {
       balance = 0;
       updateBalance();

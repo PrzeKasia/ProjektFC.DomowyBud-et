@@ -7,10 +7,10 @@ function updateBalance() {
   const absBalance = Math.abs(balance).toFixed(2);
 
   if (balance > 0) {
-    balanceMessage = `Możesz jeszcze wydać ${absBalance} PLN`;
+    balanceMessage = `Możesz jeszcze wydać ${absBalance} `;
     balanceAmount.style.color = "green";
   } else if (balance < 0) {
-    balanceMessage = `Bilans jest ujemny. Jesteś na minusie ${absBalance} PLN`;
+    balanceMessage = `Bilans jest ujemny. Jesteś na minusie ${absBalance} `;
     balanceAmount.style.color = "red";
   } else {
     balanceMessage = "Bilans wynosi 0";

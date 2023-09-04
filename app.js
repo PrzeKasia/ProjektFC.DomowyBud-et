@@ -111,7 +111,7 @@ function editTransaction(event, name, amount, type) {
 
       if (type === "income") {
         balance += diffAmount;
-      } else {
+      } else if (type === "expense") {
         balance -= diffAmount;
       }
 
@@ -129,7 +129,7 @@ function deleteTransaction(transactionItem) {
 
     if (type === "income") {
       balance -= amount;
-    } else {
+    } else if (type === "expense") {
       balance += Math.abs(amount);
     }
 

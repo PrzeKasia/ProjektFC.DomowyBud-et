@@ -63,7 +63,7 @@ function addTransaction(name, amount, type) {
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Usuń";
   deleteButton.addEventListener("click", () =>
-    deleteTransaction(transactionItem)
+    deleteTransaction(transactionItem, type)
   );
 
   if (type === "income") {
@@ -120,13 +120,11 @@ function editTransaction(event, name, amount, type) {
   }
 }
 
-function deleteTransaction(transactionItem) {
+function deleteTransaction(transactionItem, type) {
   const amountSpan = transactionItem.querySelector(".transaction-amount");
   const amount = parseFloat(amountSpan.textContent);
 
   if (!isNaN(amount)) {
-    const type = amount > 0 ? "income" : "expense";
-
     if (type === "income") {
       balance -= amount;
     } else if (type === "expense") {
